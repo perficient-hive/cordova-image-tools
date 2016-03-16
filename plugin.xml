@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        id="com.perficient.imagetools"
+        version="0.7.0">
+
+  <name>ImageTools</name>
+
+  <engines>
+    <engine name="cordova" version=">=3.4.0"/>
+  </engines>
+
+  <asset src="www/imagetools.js" target="js/imagetools.js"/>
+
+  <js-module src="www/imagetools.js" name="imagetools">
+    <clobbers target="imagetools" />
+  </js-module>
+
+  <platform name="android">
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="ImageTools">
+        <param name="android-package" value="com.perficient.plugin.ImageTools"/>
+      </feature>
+    </config-file>
+
+    <source-file src="src/android/ImageTools.java" target-dir="src/com/perficient/plugin/"/>
+    <source-file src="src/android/libs/opencv.jar" target-dir="libs" />
+    <source-file src="src/android/libs/armeabi/libopencv_java3.so" target-dir="libs/armeabi" />
+    <source-file src="src/android/libs/armeabi-v7a/libopencv_java3.so" target-dir="libs/armeabi-v7a" />
+  </platform>
+
+  <platform name="ios">
+    
+    <config-file target="config.xml" parent="/widget">
+      <feature name="ImageTools">
+        <param name="ios-package" value="MPImageTools" />
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/MPImageTools.h" target-dir="ImageToolsPlugin"/>
+    <source-file src="src/ios/MPImageTools.m" target-dir="ImageToolsPlugin"/>
+  </platform>
+
+  <platform name="wp7">
+    <source-file src="src/wp7/ImageTools.cs"/>
+  </platform>
+
+</plugin>
